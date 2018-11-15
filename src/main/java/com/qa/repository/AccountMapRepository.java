@@ -1,18 +1,21 @@
 package com.qa.repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
+import javax.faces.bean.ApplicationScoped;
+import javax.inject.Inject;
 
 import com.qa.persistance.Account;
+import com.qa.util.JSONUtility;
 
 @ApplicationScoped
 @Alternative
 public class AccountMapRepository implements AccountRepo{
 
+	@Inject
+	private JSONUtility util;
+	
 	private long counter = 1;
 	private HashMap<Long, Account> accountMap;
 	private long ID;
@@ -22,26 +25,26 @@ public class AccountMapRepository implements AccountRepo{
 		ID = counter;
 	}
 
-	public List<Account> getAllAccounts() {
-		return new ArrayList<Account>(accountMap.values());
+	public String getAllAccounts() {
+		return util.getJSONForObject(accountMap.values());
 	}
 
-	public Account createAccount(Account account) {
+	public String createAccount(String account) {
 		ID++;
-		accountMap.put(ID, account);
+		Account newAccount = util.getObjectForJSON(account, Account.class);
+		accountMap.put(ID, newAccount);
 		return account;
 	}
 
-	public boolean updateAccount(long id, Account updatedAccount) {
-		Account account = accountMap.get(id);
-		account.setFirstName(updatedAccount.getFirstName());
-		account.setLastName(updatedAccount.getLastName());
-		return true;
+	public String updateAccount(long id, String updatedAccount) {
+		Account account = util.getObjectForJSON(updatedAccount, Account.class);
+		accountMap.put(id, account);
+		return updatedAccount;
 	}
 
-	public boolean deleteAccount(long id) {
-		accountMap.remove(id);
-		return true;
+	public String deleteAccount(long key) {
+		accountMap.remove(key);
+		return key + " Deleted";
 	}
 
 }

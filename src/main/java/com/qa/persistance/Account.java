@@ -9,6 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class Account {
 	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private long accountID;
 	
@@ -18,6 +19,12 @@ public class Account {
 	private String lastName;
 	@Column(length = 50)
 	private String accountNumber;
+	
+	public Account(String firstName, String lastName, String accountNumber) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.accountNumber = accountNumber;
+	}
 	
 	public String getFirstName() {
 		return firstName;

@@ -1,17 +1,13 @@
 package com.qa.repository;
 
-import java.util.List;
-
-import com.qa.persistance.Account;
-
 public interface AccountRepo {
 
-	List<Account> getAllAccounts();
+	String getAllAccounts();
 
-	Account createAccount(Account account);
+	String createAccount(String account);
 
-	boolean updateAccount(long id, Account accountToUpdate);
+	String updateAccount(long id, String accountToUpdate);
 
-	boolean deleteAccount(long id);
+	String deleteAccount(long id);
 
 }

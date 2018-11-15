@@ -1,17 +1,13 @@
 package com.qa.business;
 
-import java.util.List;
-
-import com.qa.persistance.Account;
-
 public interface AccountInterface {
 
-	List<Account> getAllAccounts();
+	String getAllAccounts();
 
-	Account addAccount(Account account);
+	String addAccount(String account);
 
-	boolean updateAccount(long id, Account account);
+	String updateAccount(long id, String account);
 
-	boolean deleteAccount(long id);
+	String deleteAccount(long id);
 	
 }
