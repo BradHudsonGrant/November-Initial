@@ -2,15 +2,16 @@ package com.qa.repository;
 
 import java.util.HashMap;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
-import javax.faces.bean.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.qa.persistance.Account;
 import com.qa.util.JSONUtility;
 
-@ApplicationScoped
+
 @Alternative
+@ApplicationScoped
 public class AccountMapRepository implements AccountRepo{
 
 	@Inject

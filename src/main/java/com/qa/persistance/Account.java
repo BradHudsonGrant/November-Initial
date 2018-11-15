@@ -20,7 +20,13 @@ public class Account {
 	@Column(length = 50)
 	private String accountNumber;
 	
-	public Account(String firstName, String lastName, String accountNumber) {
+	public Account() {
+		
+	}
+	
+	public Account(long id, String firstName, String lastName, String accountNumber) {
+		super();
+		this.accountID = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.accountNumber = accountNumber;

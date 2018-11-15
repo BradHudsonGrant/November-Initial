@@ -1,6 +1,7 @@
 package com.qa.interoperability;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -27,6 +28,7 @@ public class AccountEndpoint {
 	@Path("/json")
 	@POST
 	@Produces({ "application/json" })
+	@Consumes({ "application/json" })
 	public String addAccount(String account) {
 		return accountInter.addAccount(account);
 	}
